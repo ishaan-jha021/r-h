@@ -3,1342 +3,897 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R & H | Roots & Hearth - Exclusive Token Access</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <!-- Using FontAwesome for Icons (CDN) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>Farm2Future Pitch Deck</title>
     <style>
-        /* * DESIGN SYSTEM & VARIABLES
-         * -------------------------
-         */
+        /* --- RESET & VARIABLES --- */
         :root {
-            /* Palette */
-            --bg-body: #fdfcf8;
-            --bg-secondary: #f4f1ea;
-            --placeholder-bg: #eae7df;
-            --primary-green: #2d4f38; /* Forest Green */
-            --primary-green-hover: #1f3b28;
-            --accent-brown: #8b5a2b; /* Coconut Brown */
-            --token-gold: #c5a059; /* Premium Token Color */
-            --text-main: #1a1a1a;
-            --text-muted: #666666;
-            --white: #ffffff;
-            --border-light: #e5e5e5;
-            --rating-star: #fbbf24;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 16px;
+            --c-deep-green: #0E3B2E;
+            --c-sage: #7FB7A1;
+            --c-off-white: #F6F7F5;
+            --c-charcoal: #1E1E1E;
+            --c-accent: #C5A059; /* Updated to Gold from Slide 1 */
             
-            /* Typography */
-            --font-main: 'Inter', sans-serif;
-            --font-serif: 'Playfair Display', serif;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            
+            --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+            --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+            --ease-switch: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* * RESET & BASE STYLES
-         * -------------------
-         */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
             font-family: var(--font-main);
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; height: auto; }
-        
-        button {
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-family: inherit;
-        }
-
-        .container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-        }
-        
-        .section-subtitle {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        /* * HEADER
-         * --------
-         */
-        .site-header {
-            background: var(--white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .top-bar {
-            background-color: var(--primary-green);
-            color: var(--white);
-            text-align: center;
-            font-size: 0.8rem;
-            padding: 8px 0;
-            letter-spacing: 0.5px;
-            font-weight: 500;
-        }
-
-        .header-main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-            gap: 2rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-green);
-            letter-spacing: -0.5px;
-            white-space: nowrap;
-        }
-        
-        .logo span { color: var(--token-gold); }
-
-        .search-container {
-            flex: 1;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            padding-right: 50px;
-            border: 2px solid var(--border-light);
-            border-radius: var(--radius-md);
-            font-size: 0.95rem;
-            transition: border-color 0.2s;
-            background-color: var(--bg-body);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-green);
-        }
-
-        .search-btn {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 8px 12px;
-            color: var(--primary-green);
-            font-size: 1.1rem;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-item {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--token-gold);
-            transition: width 0.3s;
-        }
-
-        .nav-item:hover::after { width: 100%; }
-
-        .icon-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--text-main);
-            gap: 4px;
-        }
-
-        .icon-btn i { font-size: 1.2rem; }
-        .icon-btn:hover { color: var(--primary-green); }
-
-        .mobile-menu-icon { display: none; font-size: 1.5rem; cursor: pointer; }
-
-        /* * HERO SECTION
-         * ------------------------------
-         */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-green) 0%, #1a2f23 100%);
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 20px;
-            position: relative;
+            background-color: var(--c-off-white);
+            color: var(--c-charcoal);
             overflow: hidden;
+            width: 100vw;
+            height: 100vh;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: radial-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.5;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
+        /* --- ICONS (SVG Styling) --- */
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            margin-right: 8px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
         }
-
-        .btn-primary {
-            background-color: var(--token-gold);
-            border: 1px solid var(--token-gold);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background-color: #b08d4b;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--white);
-            color: var(--primary-green);
-        }
-
-        /* * CATEGORY GRID
-         * --------------------------------
-         */
-        .categories-section {
-            padding: 3rem 0;
-            background-color: var(--white);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .cat-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .cat-card:hover { transform: translateY(-5px); }
-
-        .cat-placeholder {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f0f7f2 0%, #e2e8e4 100%);
-            border: 3px solid var(--bg-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-green);
-            font-size: 1.5rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .cat-card:hover .cat-placeholder {
-            border-color: var(--token-gold);
-            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.2);
-        }
-
-        .cat-name {
-            font-weight: 600;
-            color: var(--text-main);
-            font-size: 0.9rem;
-        }
-
-        /* * SHOP LAYOUT & PRODUCTS
-         * ----------------------
-         */
-        .shop-layout {
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 2rem;
-            padding: 3rem 20px;
-            max-width: 1440px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-light);
-            height: fit-content;
-        }
-
-        .filter-group {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .filter-group:last-child { border-bottom: none; }
-
-        .filter-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.95rem;
-        }
-
-        .checkbox-list label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            cursor: pointer;
-        }
-
-        .checkbox-list label:hover { color: var(--primary-green); }
-
-        .checkbox-list input[type="checkbox"] {
-            accent-color: var(--primary-green);
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Products */
-        .shop-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .sort-select {
-            padding: 8px 12px;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            color: var(--text-main);
-            outline: none;
-            background: var(--white);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background: var(--white);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-            border-color: var(--token-gold);
-        }
-
-        .product-img-wrapper {
-            position: relative;
-            padding-top: 100%;
-            overflow: hidden;
-            background-color: var(--bg-secondary);
-        }
-
-        .img-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #f6f4f0 0%, #e8e4dc 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            transition: transform 0.5s ease;
-        }
-        
-        .img-placeholder i {
-            font-size: 2rem;
-            color: #d1cdc5;
-            margin-bottom: 10px;
-        }
-
-        .img-placeholder span {
-            font-size: 0.75rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        .product-card:hover .img-placeholder { transform: scale(1.05); }
-
-        .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: var(--token-gold);
-            color: var(--white);
-            padding: 4px 8px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            border-radius: 4px;
-            text-transform: uppercase;
-            z-index: 2;
-        }
-
-        .fav-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255,255,255,0.9);
+        .icon-lg {
             width: 32px;
             height: 32px;
+            margin-bottom: 0.5rem;
+            color: var(--c-deep-green);
+            transition: all 0.3s ease;
+        }
+
+        /* --- STATE MANAGEMENT --- */
+        input[name="slide-control"] { display: none; }
+
+        /* --- LAYOUT CONTAINER --- */
+        .deck-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+        }
+
+        /* --- SLIDE COMMON STYLES --- */
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            padding: 4rem 6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            /* Global Page Transition */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(60px) scale(0.95);
+            filter: blur(12px);
+            transition: 
+                opacity 0.6s ease,
+                transform 0.8s var(--ease-switch),
+                filter 0.6s ease,
+                visibility 0s 0.6s;
+            pointer-events: none;
+            z-index: 1;
+            background: var(--c-off-white);
+        }
+
+        /* Background Graphics */
+        .bg-circle {
+            position: absolute;
             border-radius: 50%;
+            z-index: -1;
+            opacity: 0.05;
+            background: var(--c-deep-green);
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-label {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--c-deep-green);
+            color: var(--c-off-white);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            opacity: 0;
-            transform: translateY(10px);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 1.5rem;
+            opacity: 0.6;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nav-label:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+            background: var(--c-sage);
+            color: var(--c-deep-green);
+        }
+
+        .nav-prev { left: 2rem; }
+        .nav-next { right: 2rem; }
+        .slide .nav-label { display: none; }
+
+        /* --- ACTIVE SLIDE LOGIC --- */
+        #s1:checked ~ .deck-container .slide-1,
+        #s2:checked ~ .deck-container .slide-2,
+        #s3:checked ~ .deck-container .slide-3,
+        #s4:checked ~ .deck-container .slide-4,
+        #s5:checked ~ .deck-container .slide-5,
+        #s6:checked ~ .deck-container .slide-6,
+        #s7:checked ~ .deck-container .slide-7,
+        #s8:checked ~ .deck-container .slide-8,
+        #s9:checked ~ .deck-container .slide-9,
+        #s10:checked ~ .deck-container .slide-10,
+        #s11:checked ~ .deck-container .slide-11 {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+            pointer-events: auto;
+            z-index: 10;
+            transition-delay: 0s;
+        }
+
+        /* Show Nav on Active */
+        #s1:checked ~ .deck-container .slide-1 .nav-label,
+        #s2:checked ~ .deck-container .slide-2 .nav-label,
+        #s3:checked ~ .deck-container .slide-3 .nav-label,
+        #s4:checked ~ .deck-container .slide-4 .nav-label,
+        #s5:checked ~ .deck-container .slide-5 .nav-label,
+        #s6:checked ~ .deck-container .slide-6 .nav-label,
+        #s7:checked ~ .deck-container .slide-7 .nav-label,
+        #s8:checked ~ .deck-container .slide-8 .nav-label,
+        #s9:checked ~ .deck-container .slide-9 .nav-label,
+        #s10:checked ~ .deck-container .slide-10 .nav-label,
+        #s11:checked ~ .deck-container .slide-11 .nav-label {
+            display: flex;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 { font-size: 4rem; font-weight: 700; color: var(--c-deep-green); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        h2 { font-size: 2.8rem; font-weight: 600; color: var(--c-deep-green); margin-bottom: 2rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; color: var(--c-charcoal); margin-bottom: 0.5rem; transition: color 0.3s ease; }
+        p { font-size: 1.1rem; line-height: 1.6; color: #444; transition: color 0.3s ease; }
+        
+        /* --- GENERAL ANIMATIONS --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes growBar { from { height: 0; opacity: 0; } to { opacity: 1; } }
+        @keyframes pulseSoft {
+            0% { box-shadow: 0 0 0 0 rgba(127, 183, 161, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(127, 183, 161, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(127, 183, 161, 0); }
+        }
+
+        /* Slide Element Animations */
+        input:checked ~ .deck-container .slide .anim-1 { animation: fadeUp 0.8s var(--ease-out) 0.3s forwards; opacity: 0; }
+        input:checked ~ .deck-container .slide .anim-2 { animation: fadeUp 0.8s var(--ease-out) 0.4s forwards; opacity: 0; }
+        input:checked ~ .deck-container .slide .anim-3 { animation: fadeUp 0.8s var(--ease-out) 0.5s forwards; opacity: 0; }
+        input:checked ~ .deck-container .slide .anim-4 { animation: fadeUp 0.8s var(--ease-out) 0.6s forwards; opacity: 0; }
+        input:checked ~ .deck-container .slide .anim-5 { animation: fadeUp 0.8s var(--ease-out) 0.7s forwards; opacity: 0; }
+        
+        /* --- SLIDE 1: NEW ORBITAL DESIGN + GLOW EFFECT --- */
+        
+        .slide-1 {
+            background: radial-gradient(circle at center, #2d4e3e 0%, #1a3c2f 100%);
+            padding: 0; 
+            overflow: hidden;
+        }
+
+        .tilt-grid {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             z-index: 2;
         }
+        
+        /* Tilt zones kept for background interaction */
+        .tilt-zone { width: 100%; height: 100%; z-index: 5; }
 
-        .product-card:hover .fav-btn { opacity: 1; transform: translateY(0); }
-        .fav-btn:hover { color: #ef4444; }
-
-        .product-info {
-            padding: 15px;
+        .tilt-content {
+            position: absolute;
+            inset: 0;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            
+            /* CRITICAL FIX: Z-index higher than zones, but let clicks pass through empty space */
+            z-index: 10; 
+            pointer-events: none; 
         }
 
-        .product-name {
+        /* CSS Mouse Tilt Logic */
+        .tilt-zone:nth-child(1):hover ~ .tilt-content { transform: rotateX(3deg) rotateY(-3deg); }
+        .tilt-zone:nth-child(2):hover ~ .tilt-content { transform: rotateX(3deg) rotateY(3deg); }
+        .tilt-zone:nth-child(3):hover ~ .tilt-content { transform: rotateX(-3deg) rotateY(-3deg); }
+        .tilt-zone:nth-child(4):hover ~ .tilt-content { transform: rotateX(-3deg) rotateY(3deg); }
+
+        /* HERO ORB WITH PULSE & HOVER GLOW */
+        .hero-orb {
+            width: 75vh;
+            height: 75vh;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), rgba(255,255,255,0.01));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+            /* Layout & Interaction */
+            transform: translateZ(50px);
+            pointer-events: auto; /* Re-enable pointer events for hover */
+            cursor: default;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            /* Continuous Pulse Animation */
+            animation: orbPulse 4s infinite ease-in-out;
+        }
+
+        /* Pulse Animation (Default State) */
+        @keyframes orbPulse {
+            0% { 
+                box-shadow: 0 0 40px rgba(197,160,89, 0.15), inset 0 0 20px rgba(197,160,89, 0.05); 
+                border-color: rgba(255,255,255,0.15); 
+            }
+            50% { 
+                box-shadow: 0 0 80px rgba(197,160,89, 0.35), inset 0 0 40px rgba(197,160,89, 0.15); 
+                border-color: rgba(197,160,89, 0.3); 
+            }
+            100% { 
+                box-shadow: 0 0 40px rgba(197,160,89, 0.15), inset 0 0 20px rgba(197,160,89, 0.05); 
+                border-color: rgba(255,255,255,0.15); 
+            }
+        }
+
+        /* Strong Hover Glow (Active State) */
+        .hero-orb:hover {
+            animation: none; /* Pause pulse to show strong steady glow */
+            box-shadow: 
+                0 0 100px rgba(197,160,89, 0.6),   /* Wide outer glow */
+                0 0 200px rgba(197,160,89, 0.3),   /* Distant outer glow */
+                inset 0 0 50px rgba(197,160,89, 0.2); /* Inner illumination */
+            border-color: #C5A059;
+            transform: translateZ(70px) scale(1.03); /* Slight lift */
+        }
+
+        .hero-orb h1 {
+            font-size: 7rem;
+            background: linear-gradient(to bottom, #ffffff, #dcdcdc);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin: 1rem 0;
+            letter-spacing: -2px;
+        }
+
+        .hero-orb .tagline {
+            color: #C5A059;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
             font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text-main);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            margin: 0;
         }
 
-        .product-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
+        .hero-orb p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             line-height: 1.4;
         }
 
-        .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-        }
-        
-        .stars { color: var(--rating-star); }
-        .count { color: var(--text-muted); font-size: 0.75rem; }
-
-        /* TOKEN SPECIFIC STYLES */
-        .token-row {
-            margin-top: auto;
-            margin-bottom: 15px;
-            padding: 10px;
-            background-color: #fcfbf8;
-            border: 1px dashed var(--token-gold);
-            border-radius: var(--radius-sm);
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .token-cost {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--primary-green);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .token-cost i { color: var(--token-gold); }
-
-        .token-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .btn-card-outline {
-            border: 1px solid var(--border-light);
-            color: var(--text-muted);
-            padding: 8px;
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        
-        .btn-card-outline:hover { 
-            border-color: var(--primary-green);
-            color: var(--primary-green);
-        }
-
-        .btn-card-fill {
-            background: var(--primary-green);
-            color: var(--white);
-            padding: 8px;
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .btn-card-fill:hover { background: var(--primary-green-hover); }
-
-        /* * TRUST, PROGRAM & REVIEWS
-         * ------------------------
-         */
-        .trust-section {
-            background-color: #f8f6f2;
-            padding: 4rem 20px;
-            text-align: center;
-        }
-
-        .trust-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .trust-item {
-            flex: 1;
-            min-width: 200px;
-            max-width: 250px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .trust-icon-box {
-            width: 70px;
-            height: 70px;
-            background: var(--white);
+        /* Orbit Rings */
+        .orbit-ring {
+            position: absolute;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary-green);
-            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(197,160,89,0.3);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
 
-        .trust-item h4 { font-weight: 600; color: var(--text-main); }
-        .trust-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; }
+        .ring-1 { width: 85vh; height: 85vh; animation: spin 40s linear infinite; }
+        .ring-2 { width: 105vh; height: 105vh; animation: spin 50s linear infinite reverse; border-color: rgba(197,160,89,0.15); }
 
-        .program-section {
-            padding: 4rem 20px;
-            background: var(--primary-green);
-            color: var(--white);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
+        .particle {
+            position: absolute;
+            top: -5px; left: 50%;
+            width: 10px; height: 10px;
+            background: #C5A059;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #C5A059;
         }
 
-        .program-text {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-        }
-
-        .program-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 2rem;
-            border-radius: var(--radius-lg);
+        .slide-1-footer {
+            position: absolute;
+            bottom: 40px;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            transform: translateZ(30px);
             width: 100%;
-            max-width: 400px;
-            text-align: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
-        .token-visual {
-            font-size: 4rem;
-            color: var(--token-gold);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        .reviews-section {
-            padding: 4rem 0;
-            background: var(--white);
+        /* --- CARD STYLES (Slides 2-11) --- */
+        .hover-card {
+            background: linear-gradient(145deg, #ffffff, #f9fbf9);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
-        .review-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .hover-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom right, rgba(127, 183, 161, 0.05), transparent);
+            opacity: 0; transition: opacity 0.4s ease;
         }
 
-        .review-card {
-            background: var(--bg-body);
-            padding: 2rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-light);
+        .hover-card:hover {
+            transform: translateY(-8px);
+            background-color: var(--c-sage);
+            box-shadow: 0 20px 40px rgba(14, 59, 46, 0.15);
+            border-color: transparent;
         }
 
-        .reviewer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+        .hover-card:hover h3, .hover-card:hover p, .hover-card:hover strong { color: var(--c-deep-green); }
+        .hover-card:hover .icon, .hover-card:hover .icon-lg { color: var(--c-deep-green); stroke: var(--c-deep-green); }
+        .hover-card:hover::before { opacity: 0; }
+
+        /* --- OTHER SLIDE STYLES --- */
+        .problem-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 4rem; align-items: center; height: 70%; }
+        .divider { height: 80%; background: #ddd; }
+        .problem-card { padding: 2rem; border-left: 4px solid var(--c-sage); margin-bottom: 1.5rem; }
+        .highlight-center {
+            grid-column: 1 / -1; text-align: center; margin-top: 2rem; 
+            padding: 1rem 2rem; background: var(--c-deep-green); color: white; border-radius: 50px;
+            display: inline-block; width: fit-content; justify-self: center;
+            animation: pulseSoft 2s infinite;
         }
 
-        .avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--accent-brown);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
+        .solution-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
+        .solution-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .check-icon { min-width: 24px; height: 24px; background: var(--c-deep-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .quote-box { margin-top: 3rem; border-left: 4px solid var(--c-deep-green); padding-left: 1.5rem; font-style: italic; font-size: 1.4rem; color: var(--c-sage); }
 
-        .review-text {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
+        .process-flow { display: flex; justify-content: space-between; align-items: stretch; margin-top: 3rem; position: relative; }
+        .process-flow::before { content: ''; position: absolute; top: 40px; left: 50px; right: 50px; height: 2px; background: #ddd; z-index: -1; }
+        .step { text-align: center; padding: 2rem 1.5rem; border-radius: 12px; width: 23%; background: white; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; color: var(--c-charcoal); }
+        .step h3 { margin-bottom: 0.5rem; color: var(--c-deep-green); }
+        .step p { font-size: 1rem; margin-top: 0; color: #444; min-height: 3.2rem; display: flex; align-items: center; justify-content: center; }
+        .step-num { width: 40px; height: 40px; background: var(--c-deep-green); color: white; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 1.5rem; font-weight: bold; flex-shrink: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 2; }
 
-        /* * FOOTER
-         * ------
-         */
-        footer {
-            background-color: #1a1a1a;
-            color: #d4d4d4;
-            padding-top: 4rem;
-            font-size: 0.9rem;
-        }
+        .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .big-stat { font-size: 6rem; font-weight: 800; color: var(--c-deep-green); line-height: 1; }
+        .stat-label { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-sage); margin-bottom: 1rem; }
+        .market-insight { border-top: 1px solid #ddd; padding-top: 1rem; margin-top: 1rem; }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
+        .usp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        .usp-card-v2 { position: relative; height: 220px; background: white; border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); border: 1px solid rgba(0,0,0,0.02); overflow: hidden; cursor: default; }
+        .usp-card-v2:hover { transform: translateY(-8px); background-color: var(--c-sage); box-shadow: 0 20px 40px rgba(14, 59, 46, 0.1); border-color: transparent; }
+        .usp-title { font-size: 1.5rem; font-weight: 600; color: var(--c-deep-green); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), color 0.3s ease; margin-bottom: 0; z-index: 2; }
+        .usp-desc { position: absolute; bottom: 2rem; left: 2rem; right: 2rem; font-size: 1rem; color: #555; opacity: 0; transform: translateY(30px); transition: all 0.4s ease-out; pointer-events: none; z-index: 2; }
+        .usp-bg-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); width: 120px; height: 120px; color: var(--c-deep-green); opacity: 0.03; transition: all 0.5s ease; z-index: 1; }
+        .usp-card-v2:hover .usp-title { transform: translateY(-50px); color: var(--c-deep-green); }
+        .usp-card-v2:hover .usp-desc { opacity: 1; transform: translateY(0); color: var(--c-deep-green); }
+        .usp-card-v2:hover .usp-bg-icon { transform: translate(-50%, -50%) scale(1.2) rotate(10deg); opacity: 0.2; color: var(--c-deep-green); }
 
-        .footer-col h3 {
-            color: var(--white);
-            font-family: var(--font-serif);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
+        .comp-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+        .comp-table th { text-align: left; padding: 1rem; border-bottom: 2px solid #ddd; color: var(--c-sage); }
+        .comp-table td { padding: 1.5rem 1rem; border-bottom: 1px solid #eee; font-size: 1.1rem; }
+        .row-us { background: rgba(127, 183, 161, 0.1); font-weight: bold; color: var(--c-deep-green); }
+        .x-icon { color: #cc5555; width: 18px; height: 18px; } 
+        .check-icon-sm { color: var(--c-deep-green); width: 18px; height: 18px; }
 
-        .footer-col ul li { margin-bottom: 0.8rem; }
-        .footer-col ul li a:hover { color: var(--white); text-decoration: underline; }
+        .rev-flow { display: flex; gap: 2rem; margin-top: 2rem; }
+        .rev-card { flex: 1; background: var(--c-deep-green); color: white; padding: 2rem; border-radius: 12px; position: relative; transition: transform 0.3s ease; }
+        .rev-card:hover { transform: translateY(-10px); }
+        .rev-card h3 { color: var(--c-sage); margin-bottom: 1rem; }
+        .rev-card p { color: rgba(255,255,255,0.8); }
+        .arrow-right { font-size: 2rem; align-self: center; color: var(--c-sage); }
 
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+        .chart-container { display: flex; align-items: flex-end; justify-content: space-around; height: 300px; margin-top: 3rem; border-bottom: 2px solid #ddd; padding-bottom: 1rem; }
+        .bar-group { display: flex; flex-direction: column; align-items: center; width: 150px; }
+        .bar { width: 60px; background: var(--c-sage); border-radius: 8px 8px 0 0; transition: height 1s ease; position: relative; }
+        .bar.us { background: var(--c-deep-green); }
+        .bar-val { position: absolute; top: -30px; width: 100%; text-align: center; font-weight: bold; }
+        .bar-label { margin-top: 1rem; text-align: center; font-size: 0.9rem; font-weight: bold; }
+        #s9:checked ~ .deck-container .slide-9 .b1 { height: 120px; animation: growBar 1s ease forwards; }
+        #s9:checked ~ .deck-container .slide-9 .b2 { height: 250px; animation: growBar 1.2s ease forwards; }
+        #s9:checked ~ .deck-container .slide-9 .b3 { height: 200px; animation: growBar 1.4s ease forwards; }
 
-        .social-icons a {
-            width: 35px;
-            height: 35px;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .team-card { text-align: center; padding: 1.5rem; transition: transform 0.3s ease; }
+        .avatar { width: 120px; height: 120px; background: #ddd; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden; position: relative; }
+        .avatar::after { content: ''; position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.1)); }
+        .av-1 { background: #E0E0E0; display: grid; place-items: center; font-size: 2rem; color: #999; }
 
-        .social-icons a:hover { background: var(--primary-green); color: var(--white); }
+        .ask-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--c-deep-green); border-radius: 12px; overflow: hidden; margin-top: 2rem; }
+        .ask-item { padding: 3rem; border-right: 1px solid #eee; border-bottom: 1px solid #eee; text-align: center; background: white; transition: background 0.3s ease; }
+        .ask-item:hover { background: #f0fdf4; }
+        .ask-val { font-size: 3rem; font-weight: 800; color: var(--c-deep-green); display: block; margin-bottom: 0.5rem; }
+        .ask-lbl { text-transform: uppercase; letter-spacing: 0.1em; color: #666; font-size: 0.8rem; }
+        .final-quote { text-align: center; margin-top: 3rem; font-size: 2rem; font-weight: 300; color: var(--c-charcoal); }
 
-        .newsletter-input {
-            width: 100%;
-            padding: 10px;
-            background: #333;
-            border: none;
-            color: var(--white);
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        /* * MEDIA QUERIES
-         * -------------
-         */
-        @media (max-width: 992px) {
-            .shop-layout { grid-template-columns: 1fr; }
-            .sidebar { display: none; }
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .mobile-menu-icon { display: block; }
-        }
-
-        @media (max-width: 600px) {
-            .header-main { padding: 10px; gap: 1rem; }
-            .search-container { display: none; }
-            .hero { height: 400px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .product-actions { grid-template-columns: 1fr; }
-            .cat-placeholder { width: 70px; height: 70px; font-size: 1rem; }
-            .btn-card-outline { font-size: 0.65rem; padding: 6px; }
-            .btn-card-fill { font-size: 0.65rem; padding: 6px; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- 1. HEADER SECTION -->
-    <header class="site-header">
-        <div class="top-bar">
-            <!-- UPDATED: Token System Banner -->
-            Members Only: Redeem Your Green Tokens for Sustainable Goods
-        </div>
-        <div class="header-main">
-            <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
-            
-            <a href="#" class="logo">R & H <span>.</span></a>
+    <!-- STATE INPUTS (Hidden) -->
+    <input type="radio" name="slide-control" id="s1" checked>
+    <input type="radio" name="slide-control" id="s2">
+    <input type="radio" name="slide-control" id="s3">
+    <input type="radio" name="slide-control" id="s4">
+    <input type="radio" name="slide-control" id="s5">
+    <input type="radio" name="slide-control" id="s6">
+    <input type="radio" name="slide-control" id="s7">
+    <input type="radio" name="slide-control" id="s8">
+    <input type="radio" name="slide-control" id="s9">
+    <input type="radio" name="slide-control" id="s10">
+    <input type="radio" name="slide-control" id="s11">
 
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search rewards...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
+    <div class="deck-container">
 
-            <nav class="nav-links">
-                <a href="#" class="nav-item">Rewards</a>
-                <a href="#" class="nav-item">Earn Tokens</a>
-                <a href="#" class="nav-item">Collections</a>
-                <a href="#" class="nav-item">Impact</a>
-                <a href="#" class="nav-item">Corporate</a>
-            </nav>
+        <!-- SLIDE 1: COVER (UPDATED) -->
+        <div class="slide slide-1">
+            <div class="tilt-grid">
+                <!-- Zones for CSS Mouse Tilt Tracking -->
+                <div class="tilt-zone"></div>
+                <div class="tilt-zone"></div>
+                <div class="tilt-zone"></div>
+                <div class="tilt-zone"></div>
 
-            <div class="header-actions">
-                <a href="#" class="icon-btn"><i class="far fa-user"></i></a>
-                <a href="#" class="icon-btn"><i class="far fa-heart"></i></a>
-                <a href="#" class="icon-btn" style="color: var(--token-gold);"><i class="fas fa-coins"></i></a>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- 2. HERO SECTION -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Unlock Luxury with Impact</h1>
-                <p>An exclusive marketplace where your sustainable actions become premium rewards. Redeem your Green Tokens for curated goods.</p>
-                <div class="cta-group">
-                    <button class="btn btn-primary">Browse Rewards</button>
-                    <button class="btn btn-secondary">How to Earn Tokens</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. CATEGORY GRID -->
-        <section class="categories-section">
-            <div class="container">
-                <div class="category-grid">
-                    <div class="cat-card">
-                        <div class="cat-placeholder"><i class="fas fa-utensils"></i></div>
-                        <span class="cat-name">Eco Kitchen</span>
-                    </div>
-                    <div class="cat-card">
-                        <div class="cat-placeholder"><i class="fas fa-wine-glass"></i></div>
-                        <span class="cat-name">Dining</span>
-                    </div>
-                    <div class="cat-card">
-                        <div class="cat-placeholder"><i class="fas fa-pump-soap"></i></div>
-                        <span class="cat-name">Bath & Body</span>
-                    </div>
-                    <div class="cat-card">
-                        <div class="cat-placeholder"><i class="fas fa-pen-nib"></i></div>
-                        <span class="cat-name">Stationery</span>
-                    </div>
-                    <div class="cat-card">
-                        <div class="cat-placeholder"><i class="fas fa-briefcase"></i></div>
-                        <span class="cat-name">Corporate</span>
-                    </div>
-                    <div class="cat-card">
-                        <div class="cat-placeholder"><i class="fas fa-gem"></i></div>
-                        <span class="cat-name">Limited</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SHOP LAYOUT -->
-        <div class="shop-layout">
-            
-            <!-- 5. FILTER & SORT UI -->
-            <aside class="sidebar">
-                <div class="filter-group">
-                    <!-- UPDATED: Token Range Filter -->
-                    <div class="filter-title">Token Range <i class="fas fa-chevron-down"></i></div>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox"> 5 - 10 Tokens</label>
-                        <label><input type="checkbox" checked> 10 - 25 Tokens</label>
-                        <label><input type="checkbox"> 25 - 50 Tokens</label>
-                        <label><input type="checkbox"> 50+ Tokens</label>
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <div class="filter-title">Material <i class="fas fa-chevron-down"></i></div>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox" checked> Bamboo</label>
-                        <label><input type="checkbox"> Coconut Shell</label>
-                        <label><input type="checkbox"> Recycled Glass</label>
-                        <label><input type="checkbox"> Organic Cotton</label>
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <div class="filter-title">Availability <i class="fas fa-chevron-down"></i></div>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox" checked> Redeemable Now</label>
-                        <label><input type="checkbox"> Waitlist</label>
-                    </div>
-                </div>
-                
-                <div class="filter-group">
-                    <div class="filter-title">Rating <i class="fas fa-chevron-down"></i></div>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox"> 4★ & above</label>
-                        <label><input type="checkbox"> 3★ & above</label>
-                    </div>
-                </div>
-            </aside>
-
-            <!-- 4. FEATURED PRODUCTS GRID -->
-            <section class="products-section">
-                <div class="shop-header">
-                    <h2 class="section-title" style="font-size: 1.5rem;">Member Rewards</h2>
-                    <div class="sort-options">
-                        <span>Sort by:</span>
-                        <select class="sort-select">
-                            <option>Token Value: Low to High</option>
-                            <option>Token Value: High to Low</option>
-                            <option>Popularity</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="product-grid">
-                    
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <span class="badge">Trending Reward</span>
-                            <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-leaf"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
+                <div class="tilt-content">
+                    <div class="hero-orb animate-in">
+                        <div class="orbit-ring ring-1">
+                            <div class="particle"></div>
                         </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
-                                <span class="count">(245)</span>
-                            </div>
-                            <h3 class="product-name">Artisan Coconut Bowls Set</h3>
-                            <p class="product-desc">Handcrafted from reclaimed shells, polished with coconut oil.</p>
-                            
-                            <!-- TOKEN UI -->
-                            <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 12 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
+                        <div class="orbit-ring ring-2">
+                            <div class="particle"></div>
                         </div>
+
+                        <span class="tagline">NOVA | IIM BANGALORE DBE</span>
+                        <h1>Farm2Future</h1>
+                        <p>
+                            VERIFIED ORGANIC. TRANSPARENT SUPPLY.<br>
+                            FAIR FOR FARMERS.
+                        </p>
                     </div>
 
-                    <!-- Product 2 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                             <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-utensils"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
-                                <span class="count">(89)</span>
-                            </div>
-                            <h3 class="product-name">Bamboo Travel Cutlery</h3>
-                            <p class="product-desc">Reusable fork, spoon, knife, and straw with organic pouch.</p>
-                            
-                             <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 8 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
-                        </div>
+                    <div class="slide-1-footer anim-5">
+                        Connecting Organic Farmers to Tier 1 & 2 India<br><br>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">
+                            PITCH TANK | MADHWENDRA SHUKLA • ADITI CHAUBEY • ISHAAN JHA
+                        </span>
                     </div>
-
-                    <!-- Product 3 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <span class="badge" style="background:var(--accent-brown)">New Arrival</span>
-                            <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-burn"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-                                <span class="count">(12)</span>
-                            </div>
-                            <h3 class="product-name">Luxury Soy Candle - Pine</h3>
-                            <p class="product-desc">Hand-poured in reusable concrete vessel with wood wick.</p>
-                            
-                             <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 18 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-circle"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
-                                <span class="count">(156)</span>
-                            </div>
-                            <h3 class="product-name">Biodegradable Plates (25pk)</h3>
-                            <p class="product-desc">Made from fallen Areca palm leaves. Sturdy & compostable.</p>
-                            
-                             <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 10 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 5 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                             <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-wine-bottle"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
-                                <span class="count">(42)</span>
-                            </div>
-                            <h3 class="product-name">Recycled Glass Tumblers</h3>
-                            <p class="product-desc">Set of 4. Thick, durable glass with a green tint.</p>
-                            
-                             <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 15 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 6 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <span class="badge">Member Favorite</span>
-                            <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-shopping-bag"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-                                <span class="count">(310)</span>
-                            </div>
-                            <h3 class="product-name">Hemp Tote Bag</h3>
-                            <p class="product-desc">Heavy-duty, spacious, and naturally antimicrobial.</p>
-                            
-                             <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 8 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 7 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-box-open"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
-                                <span class="count">(67)</span>
-                            </div>
-                            <h3 class="product-name">Zero Waste Starter Kit</h3>
-                            <p class="product-desc">Includes produce bags, beeswax wraps, and bamboo brush.</p>
-                            
-                             <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 25 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 8 -->
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <button class="fav-btn"><i class="far fa-heart"></i></button>
-                            <div class="img-placeholder">
-                                <i class="fas fa-pray"></i>
-                                <span>Product preview coming soon</span>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
-                                <span class="count">(28)</span>
-                            </div>
-                            <h3 class="product-name">Cork Yoga Mat</h3>
-                            <p class="product-desc">Non-slip, antimicrobial, and sustainably harvested cork.</p>
-                            
-                             <div class="token-row">
-                                <span class="token-cost"><i class="fas fa-coins"></i> Requires 30 Green Tokens</span>
-                                <span class="token-label">Redemption Required</span>
-                            </div>
-
-                            <div class="product-actions">
-                                <button class="btn-card-outline">Earn Tokens</button>
-                                <button class="btn-card-fill">Redeem</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-        </div>
-
-        <!-- 6. TRUST & CREDIBILITY SECTION -->
-        <section class="trust-section">
-            <div class="container">
-                <h2 class="section-title">Why Collect Green Tokens?</h2>
-                <div class="trust-grid">
-                    <div class="trust-item">
-                        <div class="trust-icon-box"><i class="fas fa-leaf"></i></div>
-                        <h4>Verified Impact</h4>
-                        <p>Tokens are minted only when real-world sustainable actions are verified.</p>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon-box"><i class="fas fa-lock"></i></div>
-                        <h4>Exclusive Access</h4>
-                        <p>Unlock limited edition products not available to the general public.</p>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon-box"><i class="fas fa-gift"></i></div>
-                        <h4>Premium Rewards</h4>
-                        <p>Redeem tokens for high-quality, ethically sourced goods.</p>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon-box"><i class="fas fa-users"></i></div>
-                        <h4>Community Driven</h4>
-                        <p>Join a network of individuals committed to a greener future.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. EXCLUSIVE PROGRAM SECTION -->
-        <section class="program-section">
-            <div class="program-text">
-                <h2 style="font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 1rem;">Corporate Token Program</h2>
-                <p style="margin-bottom: 1.5rem; font-size: 1.1rem; opacity: 0.9;">Empower your employees to earn tokens through sustainable habits. Track collective impact and redeem bulk rewards for your office.</p>
-                <button class="btn btn-secondary">Partner With Us</button>
-            </div>
-            <div class="program-card">
-                <div class="token-visual"><i class="fas fa-coins"></i></div>
-                <h3 style="margin-bottom: 10px; font-weight: 600;">R&H Impact Wallet</h3>
-                <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 20px;">Securely store and manage your organization's Green Tokens.</p>
-                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.8rem;">
-                    Balance: 2,500 GT
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. REVIEWS SECTION -->
-        <section class="reviews-section">
-            <div class="container">
-                <h2 class="section-title" style="text-align: center;">Member Stories</h2>
-                <p class="section-subtitle" style="text-align: center;">How our community is redeeming impact</p>
-                
-                <div class="review-grid">
-                    <div class="review-card">
-                        <div class="reviewer">
-                            <div class="avatar">SJ</div>
-                            <div>
-                                <h4 style="font-weight: 600;">Sarah Jenkins</h4>
-                                <div class="stars" style="font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
-                        </div>
-                        <p class="review-text">"Redeeming my tokens for the coconut bowls was seamless. It feels great to be rewarded for my sustainable choices."</p>
-                    </div>
-                    <div class="review-card">
-                        <div class="reviewer">
-                            <div class="avatar" style="background-color: var(--primary-green);">MP</div>
-                            <div>
-                                <h4 style="font-weight: 600;">Mike Peterson</h4>
-                                <div class="stars" style="font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
-                        </div>
-                        <p class="review-text">"Our office collected tokens together and redeemed them for the bamboo cutlery sets. A fantastic team-building initiative."</p>
-                    </div>
-                    <div class="review-card">
-                        <div class="reviewer">
-                            <div class="avatar" style="background-color: #d4a373;">EL</div>
-                            <div>
-                                <h4 style="font-weight: 600;">Emma Lee</h4>
-                                <div class="stars" style="font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                            </div>
-                        </div>
-                        <p class="review-text">"I'm saving up my tokens for the Yoga Mat. The quality of these rewards is genuinely premium."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- 9. FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Roots & Hearth</h3>
-                    <p style="margin-bottom: 1.5rem; line-height: 1.6;">The premier marketplace for sustainable rewards. Turn your impact into exclusive lifestyle goods.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Rewards</h3>
-                    <ul>
-                        <li><a href="#">All Rewards</a></li>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Most Popular</a></li>
-                        <li><a href="#">Token Bundles</a></li>
-                        <li><a href="#">Gift Tokens</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">How to Earn</a></li>
-                        <li><a href="#">Redemption Policy</a></li>
-                        <li><a href="#">Token FAQ</a></li>
-                        <li><a href="#">Sustainability Report</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Stay Connected</h3>
-                    <p style="margin-bottom: 10px;">Get updates on new rewards and token drops.</p>
-                    <form onsubmit="event.preventDefault();">
-                        <input type="email" class="newsletter-input" placeholder="Enter your email">
-                        <button class="btn btn-primary" style="width: 100%; padding: 10px;">Subscribe</button>
-                    </form>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2024 Roots & Hearth. All rights reserved. | Privacy Policy | Terms of Service</p>
-            </div>
+            <!-- Navigation -->
+            <label for="s2" class="nav-label nav-next">→</label>
         </div>
-    </footer>
+
+        <!-- SLIDE 2: THE PROBLEM -->
+        <div class="slide slide-2">
+            <h2 class="anim-1">The Trust Gap in Organic Food</h2>
+            <div class="problem-grid">
+                <div class="anim-2">
+                    <h3>Consumer Pain</h3>
+                    <div class="problem-card hover-card">
+                        <!-- Icon: Alert Triangle -->
+                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <p><strong>No Guarantee</strong><br>Is this actually organic? Labels are often fake.</p>
+                    </div>
+                    <div class="problem-card hover-card">
+                        <!-- Icon: Eye Off -->
+                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        <p><strong>No Visibility</strong><br>Zero insight into farm practices or harvest dates.</p>
+                    </div>
+                    <div class="problem-card hover-card">
+                        <!-- Icon: Trending Down -->
+                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>
+                        <p><strong>Inconsistent Quality</strong><br>Supermarket organic is often wilted or old.</p>
+                    </div>
+                </div>
+                <div class="divider anim-3"></div>
+                <div class="anim-3">
+                    <h3>Farmer Pain</h3>
+                    <div class="problem-card hover-card" style="border-color: var(--c-deep-green);">
+                         <!-- Icon: Dollar/Money -->
+                         <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        <p><strong>Intermediary Trap</strong><br>Middlemen take 60% of the margin.</p>
+                    </div>
+                    <div class="problem-card hover-card" style="border-color: var(--c-deep-green);">
+                        <!-- Icon: Activity -->
+                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <p><strong>Price Volatility</strong><br>No demand certainty leads to crop waste.</p>
+                    </div>
+                </div>
+                <div class="highlight-center anim-4">
+                    Trust is broken on both sides.
+                </div>
+            </div>
+            
+            <label for="s1" class="nav-label nav-prev">←</label>
+            <label for="s3" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 3: OUR SOLUTION -->
+        <div class="slide slide-3">
+            <div class="bg-circle" style="width: 400px; height: 400px; bottom: -50px; left: -50px;"></div>
+            <h2 class="anim-1">A Trust-First Sourcing Platform</h2>
+            <div class="solution-list">
+                <div class="solution-item anim-2">
+                    <div class="check-icon">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin:0; width:16px; height:16px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Direct Farmer → Consumer</h3>
+                        <p>Eliminating 3 layers of middlemen.</p>
+                    </div>
+                </div>
+                <div class="solution-item anim-3">
+                    <div class="check-icon">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin:0; width:16px; height:16px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Tier 1 & Tier 2 Focus</h3>
+                        <p>Serving the underserved premium market.</p>
+                    </div>
+                </div>
+                <div class="solution-item anim-4">
+                    <div class="check-icon">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin:0; width:16px; height:16px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Transparency-Led</h3>
+                        <p>QR codes trace every harvest back to the soil.</p>
+                    </div>
+                </div>
+                <div class="solution-item anim-5">
+                    <div class="check-icon">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin:0; width:16px; height:16px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Website-First</h3>
+                        <p>Low friction ordering, building for scale.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="quote-box anim-5">
+                "Not just organic delivery — verified organic supply."
+            </div>
+
+            <label for="s2" class="nav-label nav-prev">←</label>
+            <label for="s4" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 4: HOW IT WORKS -->
+        <div class="slide slide-4">
+            <h2 class="anim-1">How It Works</h2>
+            <div class="process-flow">
+                <div class="step hover-card anim-2">
+                    <div class="step-num">1</div>
+                    <h3>Farmer Onboarding</h3>
+                    <p>Soil testing & organic certification verification.</p>
+                </div>
+                <div class="step hover-card anim-3">
+                    <div class="step-num">2</div>
+                    <h3>Crop Planning</h3>
+                    <p>Demand-led planting schedules & fair pricing.</p>
+                </div>
+                <div class="step hover-card anim-4">
+                    <div class="step-num">3</div>
+                    <h3>Consumer Orders</h3>
+                    <p>Weekly baskets with full traceability.</p>
+                </div>
+                <div class="step hover-card anim-5">
+                    <div class="step-num">4</div>
+                    <h3>Feedback Loop</h3>
+                    <p>QR scan for quality check & farmer rating.</p>
+                </div>
+            </div>
+
+            <label for="s3" class="nav-label nav-prev">←</label>
+            <label for="s5" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 5: MARKET OPPORTUNITY -->
+        <div class="slide slide-5">
+            <h2 class="anim-1">Market Opportunity</h2>
+            <div class="market-grid">
+                <div>
+                    <div class="anim-2">
+                        <div class="big-stat">$1.9B</div>
+                        <div class="stat-label">Indian Organic Market (2024)</div>
+                    </div>
+                    <div class="anim-3" style="margin-top: 3rem;">
+                        <div class="big-stat">$10.8B</div>
+                        <div class="stat-label">Projected by 2033</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="market-insight anim-4">
+                        <h3>~20% CAGR</h3>
+                        <p>One of the fastest growing food sectors in India.</p>
+                    </div>
+                    <div class="market-insight anim-5">
+                        <h3>Tier 2 Demand</h3>
+                        <p>Rising health consciousness in non-metro cities with limited supply.</p>
+                    </div>
+                    <div class="market-insight anim-5">
+                        <h3>Subscription Behavior</h3>
+                        <p>High sticky factor once trust is established.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="anim-5" style="margin-top: 2rem; font-weight: bold; color: var(--c-deep-green);">
+                Insight: Consumers pay for TRUST, not just the product.
+            </div>
+
+            <label for="s4" class="nav-label nav-prev">←</label>
+            <label for="s6" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 6: USP - SAGE HOVER LOGIC -->
+        <div class="slide slide-6">
+            <h2 class="anim-1">Core Advantages</h2>
+            <p style="margin-bottom: 2rem; font-size: 0.9rem; color: #666;" class="anim-1">Hover over cards to see details</p>
+            <div class="usp-grid anim-2">
+                
+                <!-- USP 1 -->
+                <div class="usp-card-v2">
+                    <svg class="usp-bg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <h3 class="usp-title">Blockchain Traceability</h3>
+                    <p class="usp-desc">
+                        Every batch has a digital footprint. Consumers scan to see the farm, harvest date, and soil test report. Solves the trust deficit.
+                    </p>
+                </div>
+
+                <!-- USP 2 -->
+                <div class="usp-card-v2">
+                     <svg class="usp-bg-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                    <h3 class="usp-title">AI-Powered Baskets</h3>
+                    <p class="usp-desc">
+                        Smart prediction algorithms suggest basket mixes based on seasonal availability and user preferences, reducing waste.
+                    </p>
+                </div>
+
+                <!-- USP 3 -->
+                <div class="usp-card-v2">
+                    <svg class="usp-bg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <h3 class="usp-title">On-Demand Production</h3>
+                    <p class="usp-desc">
+                        We tell farmers what to grow based on pre-paid subscriptions. This eliminates market risk for the farmer.
+                    </p>
+                </div>
+
+                <!-- USP 4 -->
+                <div class="usp-card-v2">
+                    <svg class="usp-bg-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <h3 class="usp-title">IoT Quality Check</h3>
+                    <p class="usp-desc">
+                        Sensors in logistics ensure temperature control from farm gate to doorstep, maintaining nutrient density.
+                    </p>
+                </div>
+
+            </div>
+
+            <label for="s5" class="nav-label nav-prev">←</label>
+            <label for="s7" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 7: COMPETITION -->
+        <div class="slide slide-7">
+            <h2 class="anim-1">Competitive Landscape</h2>
+            <table class="comp-table anim-2">
+                <thead>
+                    <tr>
+                        <th>Platform</th>
+                        <th>Sourcing</th>
+                        <th>Focus</th>
+                        <th>Traceability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="anim-3">
+                        <td>Amazon Fresh</td>
+                        <td>Aggregators</td>
+                        <td>Selection & Speed</td>
+                        <td>
+                            <svg class="icon x-icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            Low
+                        </td>
+                    </tr>
+                    <tr class="anim-4">
+                        <td>BigBasket / Blinkit</td>
+                        <td>Dark Stores</td>
+                        <td>Speed (10min)</td>
+                        <td>
+                            <svg class="icon x-icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            Medium
+                        </td>
+                    </tr>
+                    <tr class="row-us anim-5" style="transform: scale(1.02); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <td>Farm2Future</td>
+                        <td>Direct Farm</td>
+                        <td>Trust & Purity</td>
+                        <td>
+                            <svg class="icon check-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Full (Blockchain)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="anim-5" style="margin-top: 2rem;">
+                <p><strong>Our Moat:</strong> Verified sourcing cannot be built overnight by speed-focused players.</p>
+            </div>
+
+            <label for="s6" class="nav-label nav-prev">←</label>
+            <label for="s8" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 8: REVENUE MODEL -->
+        <div class="slide slide-8">
+            <h2 class="anim-1">Revenue Model</h2>
+            <div class="rev-flow">
+                <div class="rev-card anim-2">
+                    <h3>Farmer Commission</h3>
+                    <p>2–4%</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">On produce sales facilitated through the platform.</p>
+                </div>
+                <div class="arrow-right anim-3">→</div>
+                <div class="rev-card anim-3">
+                    <h3>Platform Fee</h3>
+                    <p>Delivery & Service</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Charged to consumer for last-mile logistics.</p>
+                </div>
+                <div class="arrow-right anim-4">→</div>
+                <div class="rev-card anim-4">
+                    <h3>Subscription Baskets</h3>
+                    <p>Recurring Revenue</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Monthly pre-paid organic plans (High Retention).</p>
+                </div>
+            </div>
+            <p class="anim-5" style="margin-top: 3rem; text-align: center;">
+                <em>Future Stream: B2B supply to organic cafes and hotels.</em>
+            </p>
+
+            <label for="s7" class="nav-label nav-prev">←</label>
+            <label for="s9" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 9: CAC & UNIT ECONOMICS -->
+        <div class="slide slide-9">
+            <h2 class="anim-1">Unit Economics & CAC</h2>
+            <div class="chart-container">
+                <div class="bar-group">
+                    <div class="bar b1"><div class="bar-val">₹250</div></div>
+                    <div class="bar-label">Our CAC</div>
+                </div>
+                <div class="bar-group">
+                    <div class="bar b2" style="background: #ccc;"><div class="bar-val">₹500</div></div>
+                    <div class="bar-label">Industry Avg</div>
+                </div>
+                <div class="bar-group">
+                    <div class="bar b3 us"><div class="bar-val">₹1000</div></div>
+                    <div class="bar-label">Farmer CAC</div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                <div class="anim-4" style="width: 45%;">
+                    <h3>Consumer CAC: ₹200–300</h3>
+                    <p>Low due to word-of-mouth in community groups and high trust factor.</p>
+                </div>
+                <div class="anim-5" style="width: 45%;">
+                    <h3>Payback Period</h3>
+                    <p><strong>2–3 Purchases.</strong> High LTV as organic buyers are habit-driven.</p>
+                </div>
+            </div>
+
+            <label for="s8" class="nav-label nav-prev">←</label>
+            <label for="s10" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 10: TEAM -->
+        <div class="slide slide-10">
+            <h2 class="anim-1">The Team</h2>
+            <div class="team-grid">
+                <div class="team-card hover-card anim-2">
+                    <div class="avatar av-1">MS</div>
+                    <h3>Madhwendra Shukla</h3>
+                    <p style="color: var(--c-sage); font-weight: bold;">Strategy & Product</p>
+                </div>
+                <div class="team-card hover-card anim-3">
+                    <div class="avatar av-1">AC</div>
+                    <h3>Aditi Chaubey</h3>
+                    <p style="color: var(--c-sage); font-weight: bold;">Operations</p>
+                </div>
+                <div class="team-card hover-card anim-4">
+                    <div class="avatar av-1">IJ</div>
+                    <h3>Ishaan Jha</h3>
+                    <p style="color: var(--c-sage); font-weight: bold;">Tech & Blockchain</p>
+                </div>
+            </div>
+            <p class="anim-5" style="text-align: center; margin-top: 3rem; font-size: 1.2rem;">
+                Complementary skills across agriculture, supply chain, and technology.
+            </p>
+
+            <label for="s9" class="nav-label nav-prev">←</label>
+            <label for="s11" class="nav-label nav-next">→</label>
+        </div>
+
+        <!-- SLIDE 11: THE ASK -->
+        <div class="slide slide-11">
+            <h2 class="anim-1">The Ask</h2>
+            <div class="ask-grid anim-2">
+                <div class="ask-item">
+                    <span class="ask-val">₹50 Lakhs</span>
+                    <span class="ask-lbl">Investment</span>
+                </div>
+                <div class="ask-item">
+                    <span class="ask-val">10%</span>
+                    <span class="ask-lbl">Equity</span>
+                </div>
+                <div class="ask-item" style="border-bottom: none;">
+                    <span class="ask-val">₹5 Cr</span>
+                    <span class="ask-lbl">Valuation (Pre-money)</span>
+                </div>
+                <div class="ask-item" style="border-bottom: none; border-right: none;">
+                    <span class="ask-val">Use of Funds</span>
+                    <span class="ask-lbl">Website Launch • Farmer Onboarding • Pilot</span>
+                </div>
+            </div>
+            <div class="final-quote anim-3">
+                We’re building <span style="color: var(--c-deep-green); font-weight: bold;">trust</span> before scale.
+            </div>
+            <div style="text-align: center; margin-top: 2rem; opacity: 0.5;" class="anim-4">
+                contact@farm2future.in
+            </div>
+
+            <label for="s10" class="nav-label nav-prev">←</label>
+        </div>
+
+    </div>
 
 </body>
 </html>
